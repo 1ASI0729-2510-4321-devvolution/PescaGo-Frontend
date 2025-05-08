@@ -47,10 +47,6 @@ month.txt
 !.devcontainer/recommended-devcontainer.json
 !.devcontainer/recommended-Dockerfile
 
-# Ignore npm/yarn debug log
-npm-debug.log
-yarn-error.log
-
 # Ignore cache created with the Angular CLI
 .angular/
 

@@ -12,6 +12,7 @@ export const routes: Routes = [
   { path: "entrepreneur/search-carriers", component: SearchCarriersComponent },
   { path: "entrepreneur/request-status", component: RequestStatusComponent },
   { path: "entrepreneur/hired-services", component: HiredServicesComponent },
+  { path: "entrepreneur/search-carriers", component: SearchCarriersComponent },
   { path: "sign-in", component: SignInComponent },
   { path: "sign-up", component: SignUpComponent },
 ];

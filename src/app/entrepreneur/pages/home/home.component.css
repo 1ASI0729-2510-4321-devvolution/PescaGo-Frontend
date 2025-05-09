@@ -85,7 +85,7 @@ h1 {
 .option-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  background-color: #d8d9e6; /* Un poco más oscuro al hacer hover */
+  background-color: #bccee7; /* Un poco más oscuro al hacer hover */
 }
 
 .icon-container {

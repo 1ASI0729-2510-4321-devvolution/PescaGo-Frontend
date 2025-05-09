@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { RouterLink } from "@angular/router";
-import { CommonModule } from "@angular/common"; // Importamos CommonModule para *ngFor
+import { RouterLink, Router } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-search-carriers",
-  imports: [RouterLink, CommonModule], // Añadimos CommonModule
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: "./search-carriers.component.html",
   styleUrl: "./search-carriers.component.css",
   standalone: true,
@@ -17,6 +18,7 @@ export class SearchCarriersComponent implements OnInit {
       name: "Nombre de la empresa",
       description: "Descripción de la empresa",
       districts: ["Distrito 1", "Distrito 2", "Distrito 3"],
+      selected: false, // Propiedad para el checkbox
     },
     {
       id: 2,
@@ -24,10 +26,29 @@ export class SearchCarriersComponent implements OnInit {
       name: "Nombre de la empresa",
       description: "Descripción de la empresa",
       districts: ["Distrito 1", "Distrito 2", "Distrito 3", "Distrito 4"],
+      selected: false, // Propiedad para el checkbox
     },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  // Método para manejar el botón "Enviar Solicitud"
+  submitRequest(): void {
+    const selectedCarriers = this.carriersData.filter(
+      (carrier) => carrier.selected
+    );
+    if (selectedCarriers.length === 0) {
+      alert(
+        "Por favor, selecciona al menos una empresa antes de enviar la solicitud."
+      );
+      return;
+    }
+    // Redirección a create-request con los IDs de las empresas seleccionadas
+    const selectedIds = selectedCarriers.map((carrier) => carrier.id);
+    this.router.navigate(["/entrepreneur/create-request"], {
+      queryParams: { carrierIds: selectedIds.join(",") },
+    });
+  }
 }

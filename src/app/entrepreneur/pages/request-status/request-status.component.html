@@ -1,1 +1,85 @@
-<p>request-status works!</p>
+<div class="request-status-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <img
+        src="assets/images/solicitudes_boton.png"
+        alt="Solicitudes"
+        class="header-icon-left"
+      />
+      <h1>Estado de Solicitudes</h1>
+    </div>
+    <div class="header-right">
+      <a [routerLink]="['/entrepreneur/home']">
+        <img
+          src="assets/images/home-icon.png"
+          alt="Home"
+          class="header-icon-right"
+        />
+      </a>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <table class="status-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nombre de las Empresas</th>
+        <th>Descripción del paquete</th>
+        <th>Estado</th>
+        <th>Precio</th>
+        <th>Pagar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Fila 1 -->
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>Empresa 1</td>
+        <td>Pescado bonito fresco en caja sellada</td>
+        <td>Pendiente</td>
+        <td>--</td>
+        <td></td>
+      </tr>
+      <!-- Fila 2 -->
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>Empresa 2</td>
+        <td>Pescado bonito fresco en caja sellada</td>
+        <td>Rechazado</td>
+        <td>--</td>
+        <td></td>
+      </tr>
+      <!-- Fila 3 -->
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>Empresa 3</td>
+        <td>Pescado bonito fresco en caja sellada</td>
+        <td>Aceptado</td>
+        <td>50</td>
+        <td>
+          <div class="pay-circle"></div>
+        </td>
+      </tr>
+      <!-- Fila 4 -->
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>Empresa 4</td>
+        <td>Pescado bonito fresco en caja sellada</td>
+        <td>Aceptado</td>
+        <td>70</td>
+        <td>
+          <div class="pay-circle"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Cancel Button -->
+  <div class="button-container">
+    <button class="cancel-button" [routerLink]="['/entrepreneur/home']">
+      Cancelar
+    </button>
+  </div>
+</div>

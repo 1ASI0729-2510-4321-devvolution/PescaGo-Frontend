@@ -1,1 +1,45 @@
-<p>hired-services works!</p>
+<div class="hired-services-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <img
+        src="assets/images/servicios_boton.png"
+        alt="boxes"
+        class="header-icon-left"
+      />
+      <h1>Servicios Contratados</h1>
+    </div>
+
+    <div class="header-right">
+      <a [routerLink]="['/entrepreneur/home']">
+        <img
+          src="assets/images/home-icon.png"
+          alt="Home"
+          class="header-icon-right"
+        />
+      </a>
+    </div>
+  </div>
+
+  <!-- Services Table -->
+  <table class="services-table">
+    <thead>
+      <tr>
+        <th>Nombre de las Empresas</th>
+        <th>Descripción del Paquete</th>
+        <th>Detalles del Vehículo</th>
+        <th>Detalles del Conductor</th>
+        <th>Fecha y Hora de la Solicitud</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of hiredServices">
+        <td>{{ service.carrierName }}</td>
+        <td>{{ service.packageDescription }}</td>
+        <td>{{ service.vehicleDetails }}</td>
+        <td>{{ service.driverDetails }}</td>
+        <td>{{ service.requestDateTime | date : "short" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

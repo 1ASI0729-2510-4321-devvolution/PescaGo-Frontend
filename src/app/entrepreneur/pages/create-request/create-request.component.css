@@ -104,8 +104,11 @@
 
 /* Button Container Styles */
 .button-container {
+  display: flex;
+  justify-content: center;
   text-align: center;
   margin-top: 20px;
+  gap: 20px;
 }
 
 .submit-button {
@@ -120,6 +123,21 @@
 
 .submit-button:hover {
   background-color: #6b2e0e;
+}
+
+.cancel-button {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid black;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cancel-button:hover {
+  background-color: #f55656;
+  border: 1px solid #f55656;
 }
 
 .dimension-inputs {

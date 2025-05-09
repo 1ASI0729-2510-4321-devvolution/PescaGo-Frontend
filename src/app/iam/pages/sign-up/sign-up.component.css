@@ -1,8 +1,9 @@
-body {
+html, body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
     background-color: #e0e7ff;
+    height: 100%;
 }
 
 .selection-container {
@@ -81,6 +82,10 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .selection-container {
+        height: 110vh;
+    }
+
     .options-section {
         flex-direction: column;
         gap: 1rem;
@@ -91,12 +96,17 @@ body {
         height: 180px;
     }
 
+    .header-section {
+        display: block;
+    }
+
     .title {
-        font-size: 2rem;
+        font-size: 4rem;
     }
 
     .logo {
-        width: 70px;
+        width: 150px;
+        height: 150px;
     }
 
     .option-label {

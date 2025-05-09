@@ -102,7 +102,7 @@ h1 {
 }
 
 .cancel-button {
-  background-color: #8b4513; /* Marrón como en la imagen */
+  background-color: #352723; /* Marrón como en la imagen */
   color: white;
   border: none;
   padding: 12px 24px;
@@ -112,7 +112,7 @@ h1 {
 }
 
 .cancel-button:hover {
-  background-color: #6b2e0e;
+  background-color: #644a43;
 }
 
 .pay-circle {

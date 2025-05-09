@@ -33,45 +33,16 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Fila 1 -->
-      <tr>
+      <tr *ngFor="let request of requestData">
         <td><input type="checkbox" /></td>
-        <td>Empresa 1</td>
-        <td>Pescado bonito fresco en caja sellada</td>
-        <td>Pendiente</td>
-        <td>--</td>
-        <td></td>
-      </tr>
-      <!-- Fila 2 -->
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>Empresa 2</td>
-        <td>Pescado bonito fresco en caja sellada</td>
-        <td>Rechazado</td>
-        <td>--</td>
-        <td></td>
-      </tr>
-      <!-- Fila 3 -->
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>Empresa 3</td>
-        <td>Pescado bonito fresco en caja sellada</td>
-        <td>Aceptado</td>
-        <td>50</td>
-        <td>
+        <td>{{ request.empresa }}</td>
+        <td>{{ request.descripcion }}</td>
+        <td>{{ request.estado }}</td>
+        <td>{{ request.precio }}</td>
+        <td *ngIf="request.estado === 'Aceptado'">
           <div class="pay-circle"></div>
         </td>
-      </tr>
-      <!-- Fila 4 -->
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>Empresa 4</td>
-        <td>Pescado bonito fresco en caja sellada</td>
-        <td>Aceptado</td>
-        <td>70</td>
-        <td>
-          <div class="pay-circle"></div>
-        </td>
+        <td *ngIf="request.estado !== 'Aceptado'"></td>
       </tr>
     </tbody>
   </table>

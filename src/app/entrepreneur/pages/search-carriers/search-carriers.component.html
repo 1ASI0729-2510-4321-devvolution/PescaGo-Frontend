@@ -1,7 +1,13 @@
 <div class="search-carriers-container">
   <!-- Header with Filter -->
   <div class="header">
-    <input type="text" class="filter-input" placeholder="Filtro" />
+    <input
+      type="text"
+      class="filter-input"
+      placeholder="Filtro"
+      [(ngModel)]="filterText"
+      (input)="filterCarriers()"
+    />
     <a [routerLink]="['/entrepreneur/home']">
       <img src="assets/images/home-icon.png" alt="Home" class="header-icon" />
     </a>
@@ -9,7 +15,7 @@
 
   <!-- Carriers List -->
   <div class="carriers-list">
-    <div class="carrier-item" *ngFor="let carrier of carriersData">
+    <div class="carrier-item" *ngFor="let carrier of filteredCarriers">
       <input type="checkbox" [(ngModel)]="carrier.selected" />
       <img
         [src]="carrier.image"

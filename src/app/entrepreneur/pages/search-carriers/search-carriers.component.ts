@@ -15,7 +15,7 @@ export class SearchCarriersComponent implements OnInit {
     {
       id: 1,
       image: "assets/images/truck-1.png",
-      name: "Nombre de la empresa",
+      name: "Transportes Chamitos",
       description: "Descripción de la empresa",
       districts: ["Distrito 1", "Distrito 2", "Distrito 3"],
       selected: false, // Propiedad para el checkbox
@@ -23,16 +23,32 @@ export class SearchCarriersComponent implements OnInit {
     {
       id: 2,
       image: "assets/images/truck-2.png",
-      name: "Nombre de la empresa",
+      name: "Transportes Toreto",
       description: "Descripción de la empresa",
       districts: ["Distrito 1", "Distrito 2", "Distrito 3", "Distrito 4"],
       selected: false, // Propiedad para el checkbox
     },
   ];
 
+  filterText: string = ""; // Propiedad para almacenar el texto del filtro
+  filteredCarriers: any[] = []; // Lista filtrada de empresas
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filteredCarriers = [...this.carriersData]; // Inicializamos con todas las empresas
+  }
+
+  // Método para manejar el filtrado
+  filterCarriers(): void {
+    if (!this.filterText) {
+      this.filteredCarriers = [...this.carriersData]; // Si el filtro está vacío, mostramos todas
+    } else {
+      this.filteredCarriers = this.carriersData.filter((carrier) =>
+        carrier.name.toLowerCase().includes(this.filterText.toLowerCase())
+      );
+    }
+  }
 
   // Método para manejar el botón "Enviar Solicitud"
   submitRequest(): void {

@@ -40,7 +40,10 @@
         <td>{{ request.estado }}</td>
         <td>{{ request.precio }}</td>
         <td *ngIf="request.estado === 'Aceptado'">
-          <div class="pay-circle"></div>
+          <div
+            class="pay-circle"
+            [routerLink]="['/entrepreneur/payment-gateway', request.id]"
+          ></div>
         </td>
         <td *ngIf="request.estado !== 'Aceptado'"></td>
       </tr>

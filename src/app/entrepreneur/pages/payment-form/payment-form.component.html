@@ -2,11 +2,21 @@
   <h3>Detalles de Pago</h3>
   <div>
     <label for="holderName">Nombre del Titular:</label>
-    <input type="text" id="holderName" [(ngModel)]="holderName" />
+    <input
+      type="text"
+      id="holderName"
+      [(ngModel)]="holderName"
+      placeholder="Nombre como aparece en la tarjeta"
+    />
   </div>
   <div>
     <label for="cardNumber">Número de Tarjeta:</label>
-    <input type="text" id="cardNumber" [(ngModel)]="cardNumber" />
+    <input
+      type="text"
+      id="cardNumber"
+      [(ngModel)]="cardNumber"
+      placeholder="XXXX XXXX XXXX XXXX"
+    />
   </div>
   <div>
     <label for="expiryDate">Fecha de Vencimiento:</label>
@@ -14,8 +24,16 @@
   </div>
   <div>
     <label for="cvv">CVV:</label>
-    <input type="text" id="cvv" [(ngModel)]="cvv" />
+    <input
+      type="text"
+      id="cvv"
+      [(ngModel)]="cvv"
+      maxlength="4"
+      placeholder="XXX"
+    />
   </div>
-  <button class="pay-button" (click)="submitPayment()">PAGAR</button>
-  <button class="close-button" (click)="closeModal.emit()">Cerrar</button>
+  <div class="button-container">
+    <button class="pay-button" (click)="submitPayment()">PAGAR</button>
+    <button class="close-button" (click)="closeModal.emit()">Cerrar</button>
+  </div>
 </div>

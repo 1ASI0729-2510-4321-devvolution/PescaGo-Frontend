@@ -8,7 +8,7 @@
 /* Header Styles */
 .header {
   /*background-color: #e0e7f7;*/ /* Azul claro mejor color */
-  background-color: #729acd;
+  background-color: #2b5577;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,11 @@
 .header-icon {
   width: 30px;
   height: 30px;
-  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.header-icon:hover {
+  transform: scale(1.1);
 }
 
 /* Carriers List Styles */
@@ -94,7 +98,7 @@
 }
 
 .submit-button {
-  background-color: #8b4513; /* Marrón como en el mockup */
+  background-color: #2b5577; /* Marrón como en el mockup */
   color: white;
   border: none;
   padding: 12px 24px;
@@ -104,7 +108,7 @@
 }
 
 .submit-button:hover {
-  background-color: #6b2e0e;
+  background-color: #196fac;
 }
 
 input[type="checkbox"] {

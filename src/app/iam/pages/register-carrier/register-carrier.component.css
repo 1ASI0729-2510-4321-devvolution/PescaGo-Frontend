@@ -43,8 +43,9 @@ form {
 }
 
 .icon {
-    width: 60%;
-    height: 60%;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
 }
 
 .form-row {
@@ -101,8 +102,6 @@ form {
         left: 50%;
         transform: translateX(-50%);
     }
-
-
 
     .icon {
         width: 50%;

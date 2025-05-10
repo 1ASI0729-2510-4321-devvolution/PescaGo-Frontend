@@ -1,9 +1,11 @@
 <div class="register-container">
     <div class="form-card">
         <!-- Ícono de Cámara -->
-        <div class="icon-container">
-            <img ngSrc="/assets/image37.png" alt="Upload Image" class="icon" height="204" width="204"/>
+        <div class="icon-container" (click)="triggerFileInput()">
+            <img [src]="imagePreview || '/assets/image37.png'" alt="Upload Image" class="icon" />
         </div>
+        <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden />
+
 
         <!-- Formulario -->
         <form>

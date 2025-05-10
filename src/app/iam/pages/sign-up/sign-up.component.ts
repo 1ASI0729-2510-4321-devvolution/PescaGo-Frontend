@@ -16,9 +16,9 @@ export class SignUpComponent {
 
   navigateTo(userType: string): void {
     if (userType === 'carrier') {
-      this.router.navigate(['/carrier']);
+      this.router.navigate(['/register-carrier']);
     } else if (userType === 'entrepreneur') {
-      this.router.navigate(['/entrepreneur']);
+      this.router.navigate(['/register-entrepreneur']);
     }
   }
 }

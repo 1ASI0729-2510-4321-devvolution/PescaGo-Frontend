@@ -10,12 +10,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a2a44; /* Azul oscuro como en los otros componentes */
-  color: white;
+  color: black;
   padding: 10px 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   height: 80px;
+  border-bottom: 4px solid #79c2f0;
 }
 
 .header h1 {
@@ -53,7 +52,7 @@
 .method {
   cursor: pointer;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: #2b5577;
   border-radius: 5px;
   transition: transform 0.3s ease;
   display: flex;

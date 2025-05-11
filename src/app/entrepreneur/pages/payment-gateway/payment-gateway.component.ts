@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ActivatedRoute } from "@angular/router"; //Si se necesita agregar RouterLink se hace aqui
+import { ActivatedRoute } from "@angular/router"; //Si se necesita agregar routerLink se hace aqui
 import { trigger, transition, style, animate } from "@angular/animations";
 import { PaymentFormComponent } from "../payment-form/payment-form.component";
 import { Location } from "@angular/common";

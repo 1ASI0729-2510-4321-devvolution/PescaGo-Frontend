@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {PacketDetailsComponent} from "../../components/packet-details/packet-details.component";
 
 @Component({
   selector: 'app-requests',
@@ -41,8 +43,15 @@ export class RequestsComponent implements OnInit{
     },
   ];
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  openPacketDetails(): void {
+    this.dialog.open(PacketDetailsComponent, {
+      data: {}, // Puedes pasar datos al componente si es necesario
+      panelClass: 'carrier-packet-details-dialog-container', // Clase CSS personalizada está en styles.css
+    });
+  }
 
 }

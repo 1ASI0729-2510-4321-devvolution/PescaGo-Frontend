@@ -46,8 +46,8 @@
                         src="assets/images/image22.png"
                         class="pay-package"
                         alt="Detalles del Paquete"
-                        [routerLink]="['/entrepreneur/payment-gateway', request.id]"
-                >
+                        (click)="openPacketDetails()"
+                />
             </td>
             <td *ngIf="request.estado === 'Aceptado'">
                 <div

@@ -6,3 +6,10 @@ body {
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.carrier-packet-details-dialog-container {
+  width: 600px !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}

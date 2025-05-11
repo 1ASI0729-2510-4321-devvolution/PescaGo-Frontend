@@ -12,6 +12,7 @@ import {RegisterCarrierComponent} from "./iam/pages/register-carrier/register-ca
 import {RegisterEntreprenuerComponent} from "./iam/pages/register-entreprenuer/register-entreprenuer.component";
 import {ConfirmedServicesComponent} from "./carrier/pages/confirmed-services/confirmed-services.component";
 import {RequestsComponent} from "./carrier/pages/requests/requests.component";
+import {PacketDetailsComponent} from "./carrier/components/packet-details/packet-details.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "sign-in", pathMatch: "full" }, // Redirige a Home por defecto
@@ -31,4 +32,6 @@ export const routes: Routes = [
   { path: "carrier/home", component: CarrierHomeComponent },
   { path: "carrier/confirmed-services", component: ConfirmedServicesComponent },
   { path: "carrier/requests", component: RequestsComponent },
+  { path: "carrier/packet-details", component: PacketDetailsComponent },
+
 ];

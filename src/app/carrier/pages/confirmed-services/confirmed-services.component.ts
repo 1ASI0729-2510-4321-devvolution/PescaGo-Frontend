@@ -1,19 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
-import {MatIcon} from "@angular/material/icon";
+import { Component, OnInit } from "@angular/core";
+import { NgForOf, NgIf } from "@angular/common";
+import { RouterLink } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { MatIcon } from "@angular/material/icon";
+import { PacketDetailsComponent } from "../../components/packet-details/packet-details.component";
 
 @Component({
-  selector: 'app-confirmed-services',
-  imports: [
-    NgForOf,
-    NgIf,
-    RouterLink,
-    MatIcon
-  ],
-  templateUrl: './confirmed-services.component.html',
+  selector: "app-confirmed-services",
+  imports: [NgForOf, NgIf, RouterLink, MatIcon],
+  templateUrl: "./confirmed-services.component.html",
   standalone: true,
-  styleUrl: './confirmed-services.component.css'
+  styleUrl: "./confirmed-services.component.css",
 })
 export class ConfirmedServicesComponent implements OnInit {
   requestData = [
@@ -46,9 +43,14 @@ export class ConfirmedServicesComponent implements OnInit {
     },
   ];
 
-  constructor() {
-  }
+  constructor(private dialog: MatDialog) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  openPacketDetails(): void {
+    this.dialog.open(PacketDetailsComponent, {
+      data: {}, // Puedes pasar datos al componente si es necesario
+      panelClass: "carrier-packet-details-dialog-container", // Clase CSS personalizada está en styles.css
+    });
   }
 }

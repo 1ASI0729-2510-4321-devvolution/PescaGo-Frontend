@@ -1,75 +1,75 @@
 <div class="request-status-container">
-    <!-- Header -->
-    <div class="header">
-        <div class="header-left">
-            <img
-                    src="assets/images/solicitudes_boton.png"
-                    alt="Solicitudes"
-                    class="header-icon-left"
-            />
-            <h1>Servicio Confirmado</h1>
-        </div>
-        <div class="header-right">
-            <a [routerLink]="['/carrier/home']">
-                <img
-                        src="assets/images/home-icon.png"
-                        alt="Home"
-                        class="header-icon-right"
-                />
-            </a>
-        </div>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <img
+        src="assets/images/solicitudes_boton.png"
+        alt="Solicitudes"
+        class="header-icon-left"
+      />
+      <h1>Servicio Confirmado</h1>
     </div>
-
-    <!-- Table -->
-    <table class="status-table">
-        <thead>
-        <tr>
-            <th>Nombre del Empresario Pesquero</th>
-            <th>Ubicación de Recojo</th>
-            <th>Ubicación de Entrega</th>
-            <th>Fecha y Hora de Recojo</th>
-            <th>Detalles del Paquete</th>
-            <th>Tipo de Pago</th>
-            <th>Información de envio</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let request of requestData">
-            <td>{{ request.empresa }}</td>
-            <td>{{ request.recojo }}</td>
-            <td>{{ request.entrega }}</td>
-            <td>{{ request.fecha }}</td>
-            <td>
-                <img
-                        src="assets/images/image22.png"
-                        class="pay-package"
-                        alt="Detalles del Paquete"
-                        [routerLink]="['/entrepreneur/payment-gateway', request.id]"
-                >
-            </td>
-            <td>{{ request.pago }}</td>
-            <td *ngIf="request.info_envio === 'Pendiente'">
-                <div
-                        class="info-circle"
-                        [routerLink]="['/entrepreneur/payment-gateway', request.id]"
-                ></div>
-            </td>
-            <td *ngIf="request.info_envio !== 'Pendiente'">
-                <div
-                        class="info-circle"
-                        [routerLink]="['/entrepreneur/payment-gateway', request.id]"
-                >
-                    <mat-icon >check</mat-icon>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <!-- Cancel Button -->
-    <div class="button-container">
-        <button class="cancel-button" [routerLink]="['/carrier/home']">
-            Cancelar
-        </button>
+    <div class="header-right">
+      <a [routerLink]="['/carrier/home']">
+        <img
+          src="assets/images/home-icon.png"
+          alt="Home"
+          class="header-icon-right"
+        />
+      </a>
     </div>
+  </div>
+
+  <!-- Table -->
+  <table class="status-table">
+    <thead>
+      <tr>
+        <th>Nombre del Empresario Pesquero</th>
+        <th>Ubicación de Recojo</th>
+        <th>Ubicación de Entrega</th>
+        <th>Fecha y Hora de Recojo</th>
+        <th>Detalles del Paquete</th>
+        <th>Tipo de Pago</th>
+        <th>Información de envio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requestData">
+        <td>{{ request.empresa }}</td>
+        <td>{{ request.recojo }}</td>
+        <td>{{ request.entrega }}</td>
+        <td>{{ request.fecha }}</td>
+        <td>
+          <img
+            src="assets/images/image22.png"
+            class="pay-package"
+            alt="Detalles del Paquete"
+            (click)="openPacketDetails()"
+          />
+        </td>
+        <td>{{ request.pago }}</td>
+        <td *ngIf="request.info_envio === 'Pendiente'">
+          <div
+            class="info-circle"
+            [routerLink]="['/entrepreneur/payment-gateway', request.id]"
+          ></div>
+        </td>
+        <td *ngIf="request.info_envio !== 'Pendiente'">
+          <div
+            class="info-circle"
+            [routerLink]="['/entrepreneur/payment-gateway', request.id]"
+          >
+            <mat-icon>check</mat-icon>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Cancel Button -->
+  <div class="button-container">
+    <button class="cancel-button" [routerLink]="['/carrier/home']">
+      Cancelar
+    </button>
+  </div>
 </div>

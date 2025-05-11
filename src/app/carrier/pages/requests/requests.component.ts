@@ -3,6 +3,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {PacketDetailsComponent} from "../../components/packet-details/packet-details.component";
+import {OfferedPriceComponent} from "../../components/offered-price/offered-price.component";
 
 @Component({
   selector: 'app-requests',
@@ -51,6 +52,12 @@ export class RequestsComponent implements OnInit{
     this.dialog.open(PacketDetailsComponent, {
       data: {}, // Puedes pasar datos al componente si es necesario
       panelClass: 'carrier-packet-details-dialog-container', // Clase CSS personalizada está en styles.css
+    });
+  }
+  openOfferedPrice(): void {
+    this.dialog.open(OfferedPriceComponent, {
+      data: {}, // Puedes pasar datos al componente si es necesario
+      panelClass: 'carrier-offered-price-dialog-container', // Clase CSS personalizada está en styles.css
     });
   }
 

@@ -1,5 +1,4 @@
 import {Component, Inject} from '@angular/core';
-import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {MatDialogRef, MAT_DIALOG_DATA, MatDialogActions, MatDialogContent} from '@angular/material/dialog';
 import {MatButton} from "@angular/material/button";
 
@@ -7,9 +6,6 @@ import {MatButton} from "@angular/material/button";
 @Component({
   selector: 'app-packet-details',
   imports: [
-    MatFormField,
-    MatLabel,
-    MatInput,
     MatButton,
     MatDialogActions,
     MatDialogContent

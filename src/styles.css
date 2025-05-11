@@ -13,3 +13,10 @@ body {
   display: flex;
   align-items: center;
 }
+
+.carrier-offered-price-dialog-container {
+  width: 600px !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}

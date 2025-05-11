@@ -52,7 +52,8 @@
             <td *ngIf="request.estado === 'Aceptado'">
                 <div
                         class="pay-circle"
-                        [routerLink]="['/entrepreneur/payment-gateway', request.id]"
+                        alt="Detalles del Paquete"
+                        (click)="openOfferedPrice()"
                 ></div>
             </td>
             <td *ngIf="request.estado !== 'Aceptado'"></td>

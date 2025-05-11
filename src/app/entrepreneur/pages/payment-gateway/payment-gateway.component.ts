@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterLink, ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from "@angular/router"; //Si se necesita agregar RouterLink se hace aqui
 import { trigger, transition, style, animate } from "@angular/animations";
 import { PaymentFormComponent } from "../payment-form/payment-form.component";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-payment-gateway",
-  imports: [CommonModule, RouterLink, PaymentFormComponent],
+  imports: [CommonModule, PaymentFormComponent],
   templateUrl: "./payment-gateway.component.html",
   styleUrl: "./payment-gateway.component.css",
   standalone: true,
@@ -24,7 +25,7 @@ export class PaymentGatewayComponent implements OnInit {
   requestId: number | null = null;
   showPaymentModal: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private location: Location) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -38,5 +39,10 @@ export class PaymentGatewayComponent implements OnInit {
 
   closePaymentModal(): void {
     this.showPaymentModal = false;
+  }
+
+  // Añade este método
+  goBack(): void {
+    this.location.back();
   }
 }

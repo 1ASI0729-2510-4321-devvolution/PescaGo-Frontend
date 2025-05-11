@@ -3,7 +3,7 @@
   <div class="header">
     <h1>Pasarela de Pagos</h1>
     <div class="header-right">
-      <a [routerLink]="['/entrepreneur/request-status']">
+      <a (click)="goBack()" style="cursor: pointer">
         <img
           src="assets/images/home-icon.png"
           alt="Back"

@@ -20,3 +20,13 @@ body {
   display: flex;
   align-items: center;
 }
+
+.carrier-shipping-info-dialog-container {
+  width: 1200px !important;
+  height: 800px !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  max-width: none !important;
+  max-height: none !important;
+}

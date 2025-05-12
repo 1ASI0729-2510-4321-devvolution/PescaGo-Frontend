@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MatIcon} from "@angular/material/icon";
+import {PacketDetailsComponent} from "../../components/packet-details/packet-details.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ShippingInfoComponent} from "../../components/shipping-info/shipping-info.component";
 
 @Component({
   selector: 'app-confirmed-services',
@@ -46,9 +49,22 @@ export class ConfirmedServicesComponent implements OnInit {
     },
   ];
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+  }
+
+  openPacketDetails(): void {
+    this.dialog.open(PacketDetailsComponent, {
+      data: {}, // Puedes pasar datos al componente si es necesario
+      panelClass: 'carrier-packet-details-dialog-container', // Clase CSS personalizada está en styles.css
+    });
+  }
+  openShippingInfo(): void {
+    this.dialog.open(ShippingInfoComponent, {
+      data: {}, // Puedes pasar datos al componente si es necesario
+      panelClass: 'carrier-shipping-info-dialog-container', // Clase CSS personalizada está en styles.css
+    });
   }
 }

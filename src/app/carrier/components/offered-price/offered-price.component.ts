@@ -22,7 +22,7 @@ import {MatIcon} from "@angular/material/icon";
 })
 export class OfferedPriceComponent {
   constructor(
-      public dialogRef: MatDialogRef<PacketDetailsComponent>,
+      public dialogRef: MatDialogRef<OfferedPriceComponent>,
   ) {}
 // Método para cerrar el diálogo
   closeDialog(): void {

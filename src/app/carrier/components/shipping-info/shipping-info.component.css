@@ -17,13 +17,19 @@
     flex-direction: row;
     border-radius: 40px;
     background: white;
-    width: 100%;
+    width: 60%;
     padding-top: 0.5rem;
     align-items: center;
     margin-bottom: 1rem;
     gap: 1rem;
     justify-content: center;
+    align-self: center;
 
+}
+.package-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
 }
 .icon-section h1{
     font-size: 2rem;
@@ -59,18 +65,13 @@
 }
 
 .details-section {
-    display: flex;
     flex-direction: row; /* Asegura que los detalles estén en una columna */
     gap: 5rem; /* Espaciado entre los elementos */
     display: flex; /* Asegura que los elementos hijos se alineen */
     justify-content: center; /* Centra horizontalmente */
 }
 
-.package-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1rem;
-}
+
 
 .label {
     font-size: 1rem;
@@ -100,6 +101,26 @@ mat-form-field {
     gap: 0.5rem;
     justify-content: space-between; /* Agrega espacio entre los elementos */
     display: flex; /* Asegúrate de que sea un contenedor flex */
+}
+
+mat-dialog-actions button {
+    font-size: 1.2rem; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Hace el texto más llamativo */
+    padding: 1rem 2rem; /* Aumenta el tamaño del botón */
+    background-color: #2563eb; /* Cambia el color de fondo */
+    color: #ffffff; /* Cambia el color del texto */
+    border-radius: 8px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+    transition: transform 0.2s, background-color 0.2s; /* Animación al interactuar */
+}
+
+mat-dialog-actions button:hover {
+    background-color: #1e40af; /* Cambia el color al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+mat-dialog-actions button:active {
+    transform: scale(0.95); /* Reduce ligeramente el tamaño al hacer clic */
 }
 
 /* Responsividad */

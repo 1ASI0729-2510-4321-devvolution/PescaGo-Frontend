@@ -1,24 +1,24 @@
 <div class="request-status-container">
-    <!-- Header -->
-    <div class="header">
-        <div class="header-left">
-            <img
-                    src="assets/images/solicitudes_boton.png"
-                    alt="Solicitudes"
-                    class="header-icon-left"
-            />
-            <h1>Servicio Confirmado</h1>
-        </div>
-        <div class="header-right">
-            <a [routerLink]="['/carrier/home']">
-                <img
-                        src="assets/images/home-icon.png"
-                        alt="Home"
-                        class="header-icon-right"
-                />
-            </a>
-        </div>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <img
+        src="assets/images/solicitudes_boton.png"
+        alt="Solicitudes"
+        class="header-icon-left"
+      />
+      <h1>Servicio Confirmado</h1>
     </div>
+    <div class="header-right">
+      <a [routerLink]="['/carrier/home']">
+        <img
+          src="assets/images/home-icon.png"
+          alt="Home"
+          class="header-icon-right"
+        />
+      </a>
+    </div>
+  </div>
 
     <!-- Table -->
     <table class="status-table">
@@ -66,10 +66,10 @@
         </tbody>
     </table>
 
-    <!-- Cancel Button -->
-    <div class="button-container">
-        <button class="cancel-button" [routerLink]="['/carrier/home']">
-            Cancelar
-        </button>
-    </div>
+  <!-- Cancel Button -->
+  <div class="button-container">
+    <button class="cancel-button" [routerLink]="['/carrier/home']">
+      Cancelar
+    </button>
+  </div>
 </div>

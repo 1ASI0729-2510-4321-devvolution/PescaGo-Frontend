@@ -10,18 +10,6 @@ export class ApiService {
 
     constructor(private http: HttpClient) {}
 
-    getCarriers(): Observable<any> {
-        return this.http.get(`${this.apiUrl}/carriers`);
-    }
-
-    getEntrepreneurs(): Observable<any> {
-        return this.http.get(`${this.apiUrl}/entrepreneurs`);
-    }
-
-    getRequests(): Observable<any> {
-        return this.http.get(`${this.apiUrl}/requests`);
-    }
-
     authenticateUser(email: string, password: string): Observable<any> {
         return this.http.get(`${this.apiUrl}/users`, {
             params: { email, password }
@@ -34,6 +22,15 @@ export class ApiService {
             switchMap((createdUser: any) => {
                 carrier.userId = createdUser.id; // Relaciona el carrier con el usuario creado
                 return this.http.post(`${this.apiUrl}/carriers`, carrier);
+            })
+        );
+    }
+
+    registerEntrepreneur(user: any, entrepreneur: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/users`, user).pipe(
+            switchMap((createdUser: any) => {
+                entrepreneur.userId = createdUser.id; // Relaciona el entrepreneur con el usuario creado
+                return this.http.post(`${this.apiUrl}/entrepreneurs`, entrepreneur);
             })
         );
     }

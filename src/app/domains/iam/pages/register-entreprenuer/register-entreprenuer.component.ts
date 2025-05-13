@@ -2,6 +2,8 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {ApiService} from "../../../../core/services/api.service";
 
 @Component({
   selector: 'app-register-entreprenuer',
@@ -10,7 +12,8 @@ import {Router} from "@angular/router";
     MatFormField,
     MatInput,
     MatLabel,
-    MatFormField
+    MatFormField,
+    ReactiveFormsModule
   ],
   templateUrl: './register-entreprenuer.component.html',
   standalone: true,
@@ -20,8 +23,20 @@ export class RegisterEntreprenuerComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   imagePreview: string | null = null; // Vista previa de la imagen cargada
 
+  registerForm: FormGroup;
+  errorMessage: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(
+      private fb: FormBuilder,
+      private apiService: ApiService,
+      private router: Router
+  ) {
+    this.registerForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
 
   // Disparar el input de archivo
   triggerFileInput(): void {
@@ -45,17 +60,23 @@ export class RegisterEntreprenuerComponent {
   }
 
 
-  async onSubmit() {
-    console.log('Formulario enviado');
-    try {
-      const success = await this.router.navigate(['/entrepreneur/home']);
-      if (success) {
-        console.log('Navegación exitosa');
-      } else {
-        console.error('Error al navegar');
-      }
-    } catch (error) {
-      console.error('Error inesperado:', error);
+  onSubmit(): void {
+    if (this.registerForm.valid) {
+      const { name, email, password } = this.registerForm.value;
+
+      const user = { email, password, type: 'entrepreneur' };
+      const entrepreneur = { name };
+
+      this.apiService.registerEntrepreneur(user, entrepreneur).subscribe({
+        next: () => {
+          console.log('Registro exitoso');
+          this.router.navigate(['/sign-in']);
+        },
+        error: (err) => {
+          console.error('Error al registrar', err);
+          this.errorMessage = 'Ocurrió un error. Inténtalo de nuevo.';
+        }
+      });
     }
   }
 

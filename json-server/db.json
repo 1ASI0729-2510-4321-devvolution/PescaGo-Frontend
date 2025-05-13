@@ -13,11 +13,16 @@
       "type": "entrepreneur"
     },
     {
-      "name": "Pepe",
       "email": "j123@gmail.com",
       "password": "contra123",
       "type": "carrier",
       "id": 3
+    },
+    {
+      "email": "prueba123@gmail.com",
+      "password": "tuvi123",
+      "type": "entrepreneur",
+      "id": 4
     }
   ],
   "carriers": [
@@ -39,6 +44,11 @@
       "id": 1,
       "user_id": 2,
       "name": "Entrepreneur 1"
+    },
+    {
+      "name": "prueba123",
+      "userId": 4,
+      "id": 2
     }
   ]
 }

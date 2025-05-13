@@ -64,7 +64,7 @@ export class RegisterCarrierComponent {
     if (this.registerForm.valid) {
       const { name, email, password, description } = this.registerForm.value;
 
-      const user = { name, email, password, type: 'carrier' };
+      const user = { email, password, type: 'carrier' };
       const carrier = { name, description };
 
       this.apiService.registerCarrier(user, carrier).subscribe({

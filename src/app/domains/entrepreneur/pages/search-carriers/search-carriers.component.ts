@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RouterLink, Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import {ApiService} from "../../../../core/services/api.service";
 
 @Component({
   selector: "app-search-carriers",
@@ -33,13 +34,29 @@ export class SearchCarriersComponent implements OnInit {
   filterText: string = ""; // Propiedad para almacenar el texto del filtro
   filteredCarriers: any[] = []; // Lista filtrada de empresas
 
-  constructor(private router: Router) {}
+  entrepreneurId: string | null = null;
+
+  constructor(private router: Router,private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.filteredCarriers = [...this.carriersData]; // Inicializamos con todas las empresas
+
+    this.entrepreneurId = localStorage.getItem('entrepreneurId'); // Recuperar el id
+    console.log('Entrepreneur ID:', this.entrepreneurId);
+
+    // Cargar carriers procesados desde el servicio
+    this.apiService.getProcessedCarriers().subscribe({
+      next: (carriers) => {
+        this.carriersData = carriers;
+        this.filteredCarriers = [...this.carriersData]; // Inicializar lista filtrada
+      },
+      error: (err) => {
+        console.error("Error al cargar carriers:", err);
+      },
+    });
   }
 
-  // Método para manejar el filtrado
+  // Metodo para manejar el filtrado
   filterCarriers(): void {
     if (!this.filterText) {
       this.filteredCarriers = [...this.carriersData]; // Si el filtro está vacío, mostramos todas

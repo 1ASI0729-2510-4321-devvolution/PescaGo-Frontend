@@ -50,7 +50,19 @@ export class SignInComponent {
             if (user.type === 'carrier') {
               this.router.navigate(['/carrier/home']);
             } else if (user.type === 'entrepreneur') {
-              this.router.navigate(['/entrepreneur/home']);
+              // Obtener el id del entrepreneur
+              /*console.log('User ID:', user.id);*/
+              this.apiService.getEntrepreneurByUserId(user.id).subscribe({
+
+                next: (entrepreneur) => {
+                  localStorage.setItem('entrepreneurId', entrepreneur.id); // Guardar el id en localStorage
+                  /*console.log('entrepreneurId:', entrepreneur.id);*/
+                  this.router.navigate(['/entrepreneur/home']);
+                },
+                error: (err) => {
+                  console.error('Error al obtener entrepreneur', err);
+                }
+              });
             }
           } else {
             this.errorMessage = 'Credenciales inválidas';
@@ -63,4 +75,5 @@ export class SignInComponent {
       });
     }
   }
+
 }

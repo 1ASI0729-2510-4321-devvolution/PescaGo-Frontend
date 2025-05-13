@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
 
 @Component({
@@ -8,4 +8,12 @@ import { RouterLink } from "@angular/router";
   styleUrl: "./home.component.css",
   standalone: true
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  entrepreneurId: string | null = null;
+
+  ngOnInit(): void {
+    this.entrepreneurId = localStorage.getItem('entrepreneurId'); // Recuperar el id
+    console.log('Entrepreneur ID:', this.entrepreneurId);
+  }
+}
+

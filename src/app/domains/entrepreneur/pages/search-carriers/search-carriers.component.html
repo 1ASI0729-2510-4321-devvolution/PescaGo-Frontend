@@ -4,7 +4,7 @@
     <input
       type="text"
       class="filter-input"
-      placeholder="Filtro"
+      placeholder="Filtro por Nombre"
       [(ngModel)]="filterText"
       (input)="filterCarriers()"
     />
@@ -18,7 +18,7 @@
     <div class="carrier-item" *ngFor="let carrier of filteredCarriers">
       <input type="checkbox" [(ngModel)]="carrier.selected" />
       <img
-        [src]="carrier.image"
+        src="assets/images/truck-1.png"
         alt="{{ carrier.name }}"
         class="carrier-image"
       />

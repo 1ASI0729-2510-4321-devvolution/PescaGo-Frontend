@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, switchMap } from 'rxjs';
+import {map, Observable, switchMap } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -33,5 +33,39 @@ export class ApiService {
                 return this.http.post(`${this.apiUrl}/entrepreneurs`, entrepreneur);
             })
         );
+    }
+
+    getEntrepreneurByUserId(userId: number): Observable<any> {
+        return this.http.get<any[]>(`${this.apiUrl}/entrepreneurs`, {
+            params: { userId }
+        }).pipe(
+            map((entrepreneurs) => {
+                if (entrepreneurs.length > 0) {
+                    return entrepreneurs[0]; // Devuelve el primer entrepreneur
+                } else {
+                    throw new Error('No se encontró un entrepreneur para este usuario.');
+                }
+            })
+        );
+    }
+
+    getCarriers(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/carriers`);
+    }
+
+    getProcessedCarriers(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/carriers`).pipe(
+            map((carriers) =>
+                carriers.map((carrier) => ({
+                    ...carrier,
+                    districts: [], // Agregar distritos vacíos
+                    selected: false, // Agregar propiedad selected
+                }))
+            )
+        );
+    }
+
+    createRequest(request: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/requests`, request);
     }
 }

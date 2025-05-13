@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -26,5 +26,15 @@ export class ApiService {
         return this.http.get(`${this.apiUrl}/users`, {
             params: { email, password }
         });
+    }
+
+    registerCarrier(user: any, carrier: any): Observable<any> {
+        // Primero crea el usuario, luego el carrier
+        return this.http.post(`${this.apiUrl}/users`, user).pipe(
+            switchMap((createdUser: any) => {
+                carrier.userId = createdUser.id; // Relaciona el carrier con el usuario creado
+                return this.http.post(`${this.apiUrl}/carriers`, carrier);
+            })
+        );
     }
 }

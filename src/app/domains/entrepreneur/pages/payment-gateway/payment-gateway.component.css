@@ -46,3 +46,46 @@
   margin: 0 auto;
   max-width: 400px; /* Limita el ancho para que la cuadrícula no se extienda demasiado */
 }
+
+.method {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #2b5577;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px; /* Tamaño fijo para cada método */
+  height: 100px;
+}
+
+.method:hover {
+  transform: scale(1.05);
+}
+
+.method img {
+  width: 60px;
+  height: 60px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

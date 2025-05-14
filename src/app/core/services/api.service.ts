@@ -78,4 +78,10 @@ export class ApiService {
     createReceipt(receipt: any): Observable<any> {
         return this.http.post(`${this.apiUrl}/receipts`, receipt);
     }
+
+    getHiredServicesByEntrepreneurId(entrepreneurId: string): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/hiredServices`, {
+            params: { entrepreneurId }
+        });
+    }
 }

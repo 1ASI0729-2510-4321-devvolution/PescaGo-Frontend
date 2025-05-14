@@ -32,13 +32,16 @@
         <th>Fecha y Hora de la Solicitud</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let service of hiredServices">
+    <tbody *ngFor="let service of hiredServices">
+      <tr *ngIf="service.status === 'Pagado'" >
         <td>{{ service.carrierName }}</td>
         <td>{{ service.packageDescription }}</td>
-        <td>{{ service.vehicleDetails }}</td>
-        <td>{{ service.driverDetails }}</td>
-        <td>{{ service.requestDateTime | date : "short" }}</td>
+        <td>
+            {{ service.carrierData.vehicleBrand }}
+            {{ service.carrierData.plate }}
+        </td>
+        <td>{{ service.carrierData.driver }}</td>
+        <td>{{ service.pickupDateTime | date : "short" }}</td>
       </tr>
     </tbody>
   </table>

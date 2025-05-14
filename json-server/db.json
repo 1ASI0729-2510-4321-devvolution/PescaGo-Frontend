@@ -121,7 +121,7 @@
       "id": 1
     }
   ],
-  "confirmedRequests": [
+  "hiredServices": [
     {
       "requestId": 3,
       "entrepreneurId": "2",

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { DatePipe } from "@angular/common";
+import {ApiService} from "../../../../core/services/api.service";
 
 @Component({
   selector: "app-hired-services",
@@ -11,26 +12,24 @@ import { DatePipe } from "@angular/common";
   standalone: true,
 })
 export class HiredServicesComponent implements OnInit {
-  hiredServices = [
-    {
-      id: 1,
-      carrierName: "Transportes del Mar",
-      packageDescription: "Pescado fresco en cajas selladas",
-      vehicleDetails: "Camión refrigerado - Placa ABC123",
-      driverDetails: "Juan Pérez - Licencia A123456",
-      requestDateTime: "2025-05-10T10:00:00",
-    },
-    {
-      id: 2,
-      carrierName: "Carga Oceánica",
-      packageDescription: "Productos del mar congelados",
-      vehicleDetails: "Camión de carga - Placa XYZ789",
-      driverDetails: "María Gómez - Licencia B987654",
-      requestDateTime: "2025-05-08T09:00:00",
-    },
-  ];
+  hiredServices: any[] = [];
+  entrepreneurId: string | null = null;
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.entrepreneurId = localStorage.getItem("entrepreneurId");
+    console.log("Entrepreneur ID:", this.entrepreneurId);
+
+    if (this.entrepreneurId) {
+      this.apiService.getHiredServicesByEntrepreneurId(this.entrepreneurId).subscribe({
+        next: (services) => {
+          this.hiredServices = services;
+        },
+        error: (err) => {
+          console.error("Error al cargar los servicios contratados:", err);
+        },
+      });
+    }
+  }
 }

@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  padding: 10px 20px;
+  margin-bottom: 50px;
+  height: 80px;
+  border-bottom: 4px solid #79c2f0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.header-right {
+  padding: 10px;
+}
+
+.header-icon-right {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.header-icon-right:hover {
+  transform: scale(1.1);
+}

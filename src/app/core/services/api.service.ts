@@ -69,9 +69,15 @@ export class ApiService {
         return this.http.post(`${this.apiUrl}/requests`, request);
     }
 
-    getRequestsByEntrepreneurId(entrepreneurId: string): Observable<any[]> {
+    getRequestsByEntrepreneurId(entrepreneurId: number): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/requests`, {
             params: { entrepreneurId }
+        });
+    }
+
+    getRequestsByCarrierId(carrierId: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/requests`, {
+            params: { carrierId }
         });
     }
 
@@ -79,7 +85,7 @@ export class ApiService {
         return this.http.post(`${this.apiUrl}/receipts`, receipt);
     }
 
-    getHiredServicesByEntrepreneurId(entrepreneurId: string): Observable<any[]> {
+    getHiredServicesByEntrepreneurId(entrepreneurId: number): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/hiredServices`, {
             params: { entrepreneurId }
         });

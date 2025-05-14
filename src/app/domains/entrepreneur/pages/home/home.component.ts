@@ -11,24 +11,17 @@ import {ApiService} from "../../../../core/services/api.service";
 })
 export class HomeComponent implements OnInit {
   entrepreneurId: number | null = null;
-  entreprenuer: any = null;
+  entrepreneurName: string | null = null;
+
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.entrepreneurId = parseInt(localStorage.getItem('carrierId') || '0', 10); // Recuperar el id
+    this.entrepreneurId = parseInt(localStorage.getItem('entrepreneurId') || '0', 10); // Recuperar el id
+    this.entrepreneurName = localStorage.getItem('entrepreneurName') ; // Recuperar el id
     console.log('Entrepreneur ID:', this.entrepreneurId);
+    console.log('Entrepreneur Name:', this.entrepreneurName);
 
-    if (this.entrepreneurId) {
-      this.apiService.getEntrepreneurById(this.entrepreneurId).subscribe({
-        next: (entreprenuer) => {
-          this.entreprenuer = entreprenuer;
-        },
-        error: (err) => {
-          console.error("Error al cargar el entreprenuer:", err);
-        },
-      });
-    }
   }
 }
 

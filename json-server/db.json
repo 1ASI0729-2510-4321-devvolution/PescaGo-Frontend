@@ -53,7 +53,8 @@
   ],
   "requests": [
     {
-      "entrepreneurId": "2",
+      "entrepreneurId": 2,
+      "entrepreneurName": "prueba123",
       "carrierId": 1,
       "carrierName": "Carrier 1",
       "packageDescription": "Pescado",
@@ -72,7 +73,8 @@
       "id": 1
     },
     {
-      "entrepreneurId": "2",
+      "entrepreneurId": 2,
+      "entrepreneurName": "prueba123",
       "carrierId": 2,
       "carrierName": "Pepe",
       "packageDescription": "Pescado",
@@ -91,7 +93,8 @@
       "id": 2
     },
     {
-      "entrepreneurId": "2",
+      "entrepreneurId": 2,
+      "entrepreneurName": "prueba123",
       "carrierId": 1,
       "carrierName": "Carrier 1",
       "packageDescription": "Pescado",
@@ -108,6 +111,26 @@
       "price": 200,
       "status": "Pagado",
       "id": 3
+    },
+    {
+      "entrepreneurId": 2,
+      "entrepreneurName": "prueba123",
+      "carrierId": 2,
+      "carrierName": "Pepe",
+      "packageDescription": "Pescado",
+      "quantity": 1,
+      "weightTotal": 1,
+      "dimensions": {
+        "length": 1,
+        "width": 1,
+        "height": 1
+      },
+      "pickupLocation": "Micasa",
+      "deliveryLocation": "Lomas",
+      "pickupDateTime": "2025-05-13T01:11",
+      "price": 0,
+      "status": "Pendiente",
+      "id": 4
     }
   ],
   "receipts": [
@@ -124,7 +147,7 @@
   "hiredServices": [
     {
       "requestId": 3,
-      "entrepreneurId": "2",
+      "entrepreneurId": 2,
       "carrierId": 1,
       "carrierName": "Carrier 1",
       "packageDescription": "Pescado",

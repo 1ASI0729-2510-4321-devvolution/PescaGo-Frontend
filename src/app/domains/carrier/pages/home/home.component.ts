@@ -13,23 +13,15 @@ import {ApiService} from "../../../../core/services/api.service";
 })
 export class HomeComponent implements OnInit {
   carrierId: number | null = null;
-  carrier: any = null;
+  carrierName: string | null = null;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.carrierId = parseInt(localStorage.getItem('carrierId') || '0', 10); // Recuperar el id
-    console.log('Entrepreneur ID:', this.carrierId);
+    this.carrierName = localStorage.getItem('carrierName') ; // Recuperar el id
+    console.log('Carrier ID:', this.carrierId);
+    console.log('Carrier Name:', this.carrierName);
 
-    if (this.carrierId) {
-      this.apiService.getCarrierByUserId(this.carrierId).subscribe({
-        next: (carrier) => {
-          this.carrier = carrier;
-        },
-        error: (err) => {
-          console.error("Error al cargar el carrier:", err);
-        },
-      });
-    }
   }
 }

@@ -54,6 +54,7 @@ export class SignInComponent {
 
                 next: (carrier) => {
                   localStorage.setItem('carrierId', carrier.id); // Guardar el id en localStorage
+                  localStorage.setItem('carrierName', carrier.name); // Guardar el id en localStorage
                   this.router.navigate(['/carrier/home']);
                 },
                 error: (err) => {
@@ -68,6 +69,7 @@ export class SignInComponent {
 
                 next: (entrepreneur) => {
                   localStorage.setItem('entrepreneurId', entrepreneur.id); // Guardar el id en localStorage
+                  localStorage.setItem('entrepreneurName', entrepreneur.name); // Guardar el id en localStorage
                   /*console.log('entrepreneurId:', entrepreneur.id);*/
                   this.router.navigate(['/entrepreneur/home']);
                 },

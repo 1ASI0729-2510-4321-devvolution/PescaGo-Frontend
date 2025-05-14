@@ -25,7 +25,8 @@ export class CreateRequestComponent implements OnInit {
   deliveryLocation: string = "";
   pickupDateTime: string = "";
 
-  entrepreneurId: string | null = null;
+  entrepreneurId: number | null = null;
+  entrepreneurName: string | null = null;
 
   constructor(
       private route: ActivatedRoute,
@@ -33,8 +34,10 @@ export class CreateRequestComponent implements OnInit {
       private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.entrepreneurId = localStorage.getItem('entrepreneurId'); // Recuperar el id
+    this.entrepreneurId = parseInt(localStorage.getItem('entrepreneurId') || '0', 10); // Recuperar el id
+    this.entrepreneurName = localStorage.getItem('entrepreneurName') ; // Recuperar el id
     console.log('Entrepreneur ID:', this.entrepreneurId);
+    console.log('Entrepreneur Name:', this.entrepreneurName);
 
     this.route.queryParams.subscribe((params) => {
       const carrierIds = params["carrierIds"]
@@ -79,6 +82,7 @@ export class CreateRequestComponent implements OnInit {
 
     const requests = this.selectedCarriers.map((carrier) => ({
       entrepreneurId: this.entrepreneurId,
+      entrepreneurName: this.entrepreneurName,
       carrierId: carrier.id,
       carrierName: carrier.name,
       packageDescription: this.packageDescription,

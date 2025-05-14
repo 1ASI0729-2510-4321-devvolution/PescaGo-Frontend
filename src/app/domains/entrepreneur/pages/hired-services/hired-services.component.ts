@@ -13,12 +13,12 @@ import {ApiService} from "../../../../core/services/api.service";
 })
 export class HiredServicesComponent implements OnInit {
   hiredServices: any[] = [];
-  entrepreneurId: string | null = null;
+  entrepreneurId: number | null = null;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.entrepreneurId = localStorage.getItem("entrepreneurId");
+    this.entrepreneurId = parseInt(localStorage.getItem('entrepreneurId') || '0', 10); // Recuperar el id
     console.log("Entrepreneur ID:", this.entrepreneurId);
 
     if (this.entrepreneurId) {

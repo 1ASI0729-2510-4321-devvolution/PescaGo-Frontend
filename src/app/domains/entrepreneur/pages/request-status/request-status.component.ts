@@ -12,12 +12,12 @@ import {ApiService} from "../../../../core/services/api.service";
 })
 export class RequestStatusComponent implements OnInit {
   requestData: any[] = [];
-  entrepreneurId: string | null = null;
+  entrepreneurId: number | null = null;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.entrepreneurId = localStorage.getItem('entrepreneurId'); // Recuperar el id
+    this.entrepreneurId = parseInt(localStorage.getItem('entrepreneurId') || '0', 10); // Recuperar el id
     console.log('Entrepreneur ID:', this.entrepreneurId);
 
     if (this.entrepreneurId) {

@@ -34,14 +34,14 @@ export class SearchCarriersComponent implements OnInit {
   filterText: string = ""; // Propiedad para almacenar el texto del filtro
   filteredCarriers: any[] = []; // Lista filtrada de empresas
 
-  entrepreneurId: string | null = null;
+  entrepreneurId: number | null = null;
 
   constructor(private router: Router,private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.filteredCarriers = [...this.carriersData]; // Inicializamos con todas las empresas
 
-    this.entrepreneurId = localStorage.getItem('entrepreneurId'); // Recuperar el id
+    this.entrepreneurId = parseInt(localStorage.getItem('carrierId') || '0', 10); // Recuperar el id
     console.log('Entrepreneur ID:', this.entrepreneurId);
 
     // Cargar carriers procesados desde el servicio

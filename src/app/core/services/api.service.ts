@@ -74,4 +74,8 @@ export class ApiService {
             params: { entrepreneurId }
         });
     }
+
+    createReceipt(receipt: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/receipts`, receipt);
+    }
 }

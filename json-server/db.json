@@ -89,6 +89,53 @@
       "price": 0,
       "status": "Pendiente",
       "id": 2
+    },
+    {
+      "entrepreneurId": "2",
+      "carrierId": 1,
+      "carrierName": "Carrier 1",
+      "packageDescription": "Pescado",
+      "quantity": 2,
+      "weightTotal": 1,
+      "dimensions": {
+        "length": 1,
+        "width": 1,
+        "height": 2
+      },
+      "pickupLocation": "Micasa",
+      "deliveryLocation": "Lomas",
+      "pickupDateTime": "2025-05-16T19:35",
+      "price": 200,
+      "status": "Pagado",
+      "id": 3
+    }
+  ],
+  "receipts": [
+    {
+      "requestId": 3,
+      "holderName": "MarcoDiaz",
+      "cardNumber": "0002131023001203123",
+      "expiryDate": "2028-06",
+      "cvv": "231",
+      "paymentDate": "2025-05-14T01:18:29.169Z",
+      "id": 1
+    }
+  ],
+  "confirmedRequests": [
+    {
+      "requestId": 3,
+      "entrepreneurId": "2",
+      "carrierId": 1,
+      "carrierName": "Carrier 1",
+      "packageDescription": "Pescado",
+      "pickupDateTime": "2025-05-16T19:35",
+      "carrierData": {
+        "vehicleBrand": "porche",
+        "plate": "JKL-123",
+        "driver": "Joaquin Ramirez"
+      },
+      "status": "Pagado",
+      "id": 1
     }
   ]
 }

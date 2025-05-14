@@ -87,9 +87,59 @@
 .status-table .pay-button:hover {
   background-color: #45a049;
 }
+
 h1 {
   margin: 0;
   font-size: 24px;
   font-weight: bold;
   color: white;
 }
+
+/* Button Container Styles */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cancel-button {
+  background-color: #2b5577; /* Marrón como en la imagen */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cancel-button:hover {
+  background-color: #196fac;
+}
+
+.pay-circle {
+  width: 24px;
+  height: 24px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-circle:hover {
+  background-color: #999999;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #1a2a44;
+}
+

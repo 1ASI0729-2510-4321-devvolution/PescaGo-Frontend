@@ -93,7 +93,31 @@ export class ApiService {
                 if (carriers.length > 0) {
                     return carriers[0]; // Devuelve el primer entrepreneur
                 } else {
-                    throw new Error('No se encontró un entrepreneur para este usuario.');
+                    throw new Error('No se encontró un carrier para este usuario.');
+                }
+            })
+        );
+    }
+
+    getCarrierById(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/carriers/${id}`).pipe(
+            map((carrier) => {
+                if (carrier) {
+                    return carrier; // Devuelve el carrier encontrado
+                } else {
+                    throw new Error('No se encontró un carrier con este ID.');
+                }
+            })
+        );
+    }
+
+    getEntrepreneurById(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/entrepreneurs/${id}`).pipe(
+            map((entrepreneur) => {
+                if (entrepreneur) {
+                    return entrepreneur; // Devuelve el entrepreneur encontrado
+                } else {
+                    throw new Error('No se encontró un entrepreneur con este ID.');
                 }
             })
         );

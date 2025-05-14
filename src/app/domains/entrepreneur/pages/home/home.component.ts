@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
+import {ApiService} from "../../../../core/services/api.service";
 
 @Component({
   selector: "app-home",
@@ -9,11 +10,25 @@ import { RouterLink } from "@angular/router";
   standalone: true
 })
 export class HomeComponent implements OnInit {
-  entrepreneurId: string | null = null;
+  entrepreneurId: number | null = null;
+  entreprenuer: any = null;
+
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.entrepreneurId = localStorage.getItem('entrepreneurId'); // Recuperar el id
+    this.entrepreneurId = parseInt(localStorage.getItem('carrierId') || '0', 10); // Recuperar el id
     console.log('Entrepreneur ID:', this.entrepreneurId);
+
+    if (this.entrepreneurId) {
+      this.apiService.getEntrepreneurById(this.entrepreneurId).subscribe({
+        next: (entreprenuer) => {
+          this.entreprenuer = entreprenuer;
+        },
+        error: (err) => {
+          console.error("Error al cargar el entreprenuer:", err);
+        },
+      });
+    }
   }
 }
 

@@ -5,6 +5,7 @@ import {MatIcon} from "@angular/material/icon";
 import {PacketDetailsComponent} from "../../components/packet-details/packet-details.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ShippingInfoComponent} from "../../components/shipping-info/shipping-info.component";
+import {ApiService} from "../../../../core/services/api.service";
 
 @Component({
   selector: 'app-confirmed-services',
@@ -19,52 +20,54 @@ import {ShippingInfoComponent} from "../../components/shipping-info/shipping-inf
   styleUrl: './confirmed-services.component.css'
 })
 export class ConfirmedServicesComponent implements OnInit {
-  requestData = [
-    {
-      id: 1,
-      empresa: "Empresa 1",
-      recojo: "Av NNN 123",
-      entrega: "Calles 123",
-      fecha: "12/10/2023 22:12h",
-      pago: "Yape",
-      info_envio: "Pendiente",
-    },
-    {
-      id: 2,
-      empresa: "Empresa 2",
-      recojo: "Av NNN 123",
-      entrega: "Calles 123",
-      fecha: "12/10/2023 22:12h",
-      pago: "Plin",
-      info_envio: "Rechazado",
-    },
-    {
-      id: 3,
-      empresa: "Empresa 3",
-      recojo: "Av NNN 123",
-      entrega: "Calles 123",
-      fecha: "12/10/2023 22:12h",
-      pago: "Efectivo",
-      info_envio: "Aceptado",
-    },
-  ];
+  hiredServices: any[] = [];
+  requestData: any[] = [];
+  carrierId: number | null = null;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,private apiService: ApiService) {
+  }
+
+  getRequestForHiredService(hiredService: any): any {
+    return this.requestData.find(request => request.id === hiredService.requestId);
   }
 
   ngOnInit(): void {
+    this.carrierId = parseInt(localStorage.getItem('carrierId') || '0', 10); // Recuperar el id
+    console.log("Carrier ID:", this.carrierId);
+
+    if (this.carrierId) {
+      this.apiService.getHiredServicesByCarrierId(this.carrierId).subscribe({
+        next: (services) => {
+          this.hiredServices = services;
+        },
+        error: (err) => {
+          console.error("Error al cargar los servicios contratados:", err);
+        },
+      });
+
+      this.apiService.getRequestsByCarrierId(this.carrierId).subscribe({
+        next: (requests) => {
+          this.requestData = requests;
+        },
+        error: (err) => {
+          console.error("Error al cargar los requests:", err);
+        },
+      });
+
+    }
   }
 
-  openPacketDetails(): void {
+  openPacketDetails(request:any): void {
     this.dialog.open(PacketDetailsComponent, {
-      data: {}, // Puedes pasar datos al componente si es necesario
+      data: {request}, // Puedes pasar datos al componente si es necesario
       panelClass: 'carrier-packet-details-dialog-container', // Clase CSS personalizada está en styles.css
     });
   }
-  openShippingInfo(): void {
+  openShippingInfo(service:any): void {
     this.dialog.open(ShippingInfoComponent, {
-      data: {}, // Puedes pasar datos al componente si es necesario
+      data: {service}, // Puedes pasar datos al componente si es necesario
       panelClass: 'carrier-shipping-info-dialog-container', // Clase CSS personalizada está en styles.css
     });
+
   }
 }

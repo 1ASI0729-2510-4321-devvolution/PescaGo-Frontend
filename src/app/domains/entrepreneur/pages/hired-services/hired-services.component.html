@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody *ngFor="let service of hiredServices">
-      <tr *ngIf="service.status === 'Pagado'" >
+      <tr *ngIf="service.status === 'Confirmado'" >
         <td>{{ service.carrierName }}</td>
         <td>{{ service.packageDescription }}</td>
         <td>

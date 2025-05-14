@@ -1,8 +1,10 @@
-import {Component, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, ElementRef, ViewChild, AfterViewInit, Inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
-import {MatDialogActions, MatDialogContent, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef} from "@angular/material/dialog";
 import {MatFormField, MatInput, MatLabel, MatSuffix} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
+import {ApiService} from "../../../../core/services/api.service";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-shipping-info',
@@ -14,12 +16,13 @@ import {MatIcon} from "@angular/material/icon";
     MatIcon,
     MatInput,
     MatSuffix,
-    MatLabel
+    MatLabel,
+    FormsModule,
   ],
   templateUrl: './shipping-info.component.html',
   styleUrl: './shipping-info.component.css'
 })
-export class ShippingInfoComponent implements AfterViewInit{
+export class ShippingInfoComponent implements AfterViewInit, OnInit {
   @ViewChild('fileInput1') fileInput1!: ElementRef<HTMLInputElement>;
   @ViewChild('fileInput2') fileInput2!: ElementRef<HTMLInputElement>;
 
@@ -83,11 +86,38 @@ export class ShippingInfoComponent implements AfterViewInit{
     }
   }
 
+  service: any; // Variable para almacenar la solicitud
+
   constructor(
+      private apiService: ApiService,
       public dialogRef: MatDialogRef<ShippingInfoComponent>,
-  ) {}
+      @Inject(MAT_DIALOG_DATA) public data: any // Recibe datos opcionales
+  ) {
+    console.log('Datos recibidos en ShippingInfoComponent:', this.data.service);
+    this.service=data.service; // Asigna la solicitud recibida a la variable
+  } // Verificar los datos
+
+  ngOnInit(): void {
+    }
+
 // Método para cerrar el diálogo
   closeDialog(): void {
+    this.dialogRef.close();
+  }
+
+  sendShippingInfo(): void {
+    // Actualizar el objeto service
+    this.service.status = "Confirmado";
+
+    // Enviar la solicitud actualizada
+    this.apiService.editServiceById(this.service.id, this.service).subscribe({
+      next: (response) => {
+        console.log('Service actualizado:', response);
+      },
+      error: (err) => {
+        console.error('Error al actualizar el service:', err);
+      }
+    });
     this.dialogRef.close();
   }
 }

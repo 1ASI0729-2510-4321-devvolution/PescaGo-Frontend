@@ -91,6 +91,12 @@ export class ApiService {
         });
     }
 
+    getHiredServicesByCarrierId(carrierId: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/hiredServices`, {
+            params: { carrierId }
+        });
+    }
+
     getCarrierByUserId(userId: number): Observable<any> {
         return this.http.get<any[]>(`${this.apiUrl}/carriers`, {
             params: { userId }
@@ -133,7 +139,23 @@ export class ApiService {
         return this.http.put(`${this.apiUrl}/requests/${id}`, updatedRequest);
     }
 
+    editServiceById(id: number, updatedService: any): Observable<any> {
+        return this.http.put(`${this.apiUrl}/hiredServices/${id}`, updatedService);
+    }
+
     createHiredService(hiredService: any): Observable<any> {
         return this.http.post(`${this.apiUrl}/hiredServices`, hiredService);
+    }
+
+    getRequestById(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/requests/${id}`).pipe(
+            map((request) => {
+                if (request) {
+                    return request; // Devuelve la solicitud encontrada
+                } else {
+                    throw new Error('No se encontró una solicitud con este ID.');
+                }
+            })
+        );
     }
 }

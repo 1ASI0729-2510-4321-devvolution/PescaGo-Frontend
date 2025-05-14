@@ -69,27 +69,24 @@
       "deliveryLocation": "Lomas",
       "pickupDateTime": "2025-05-16T19:35",
       "price": 250,
-      "status": "Cotizado",
+      "status": "Pagado",
       "id": 1
     },
     {
+      "requestId": 1,
       "entrepreneurId": 2,
       "entrepreneurName": "prueba123",
-      "carrierId": 2,
-      "carrierName": "Pepe",
+      "carrierId": 1,
+      "carrierName": "Carrier 1",
       "packageDescription": "Pescado",
-      "quantity": 2,
-      "weightTotal": 1,
-      "dimensions": {
-        "length": 1,
-        "width": 1,
-        "height": 2
-      },
-      "pickupLocation": "Micasa",
-      "deliveryLocation": "Lomas",
       "pickupDateTime": "2025-05-16T19:35",
-      "price": 0,
+      "carrierData": {
+        "vehicleBrand": "",
+        "plate": "",
+        "driver": ""
+      },
       "status": "Pendiente",
+      "paymentMethod": "yape",
       "id": 2
     },
     {
@@ -142,12 +139,22 @@
       "cvv": "231",
       "paymentDate": "2025-05-14T01:18:29.169Z",
       "id": 1
+    },
+    {
+      "requestId": 1,
+      "holderName": "MarcoDiaz",
+      "cardNumber": "1231231212",
+      "expiryDate": "2025-07",
+      "cvv": "123",
+      "paymentDate": "2025-05-14T11:09:06.980Z",
+      "id": 2
     }
   ],
   "hiredServices": [
     {
       "requestId": 3,
       "entrepreneurId": 2,
+      "entrepreneurName": "prueba123",
       "carrierId": 1,
       "carrierName": "Carrier 1",
       "packageDescription": "Pescado",
@@ -157,8 +164,26 @@
         "plate": "JKL-123",
         "driver": "Joaquin Ramirez"
       },
-      "status": "Pagado",
+      "status": "Confirmado",
+      "paymentMethod": "plin",
       "id": 1
+    },
+    {
+      "requestId": 1,
+      "entrepreneurId": 2,
+      "entrepreneurName": "prueba123",
+      "carrierId": 1,
+      "carrierName": "Carrier 1",
+      "packageDescription": "Pescado",
+      "pickupDateTime": "2025-05-16T19:35",
+      "carrierData": {
+        "vehicleBrand": "Nissan",
+        "plate": "JFL-123",
+        "driver": "Jose Torres"
+      },
+      "status": "Confirmado",
+      "paymentMethod": "yape",
+      "id": 2
     }
   ]
 }

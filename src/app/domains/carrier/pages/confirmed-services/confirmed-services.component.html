@@ -34,30 +34,29 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let request of requestData">
-            <td>{{ request.empresa }}</td>
-            <td>{{ request.recojo }}</td>
-            <td>{{ request.entrega }}</td>
-            <td>{{ request.fecha }}</td>
+        <tr *ngFor="let service of hiredServices">
+            <td>{{ service.entrepreneurName }}</td>
+            <td>{{ getRequestForHiredService(service)?.pickupLocation }}</td>
+            <td>{{ getRequestForHiredService(service)?.deliveryLocation }}</td>
+            <td>{{ service.pickupDateTime }}</td>
             <td>
                 <img
                         src="assets/images/image22.png"
                         class="pay-package"
                         alt="Detalles del Paquete"
-                        (click)="openPacketDetails()"
+                        (click)="openPacketDetails(getRequestForHiredService(service))"
                 >
             </td>
-            <td>{{ request.pago }}</td>
-            <td *ngIf="request.info_envio === 'Pendiente'">
+            <td>{{ service.paymentMethod }}</td>
+            <td *ngIf="service.status === 'Pendiente'">
                 <div
                         class="info-circle"
-                        (click)="openShippingInfo()"
+                        (click)="openShippingInfo(service)"
                 ></div>
             </td>
-            <td *ngIf="request.info_envio !== 'Pendiente'">
+            <td *ngIf="service.status === 'Confirmado'">
                 <div
                         class="info-circle"
-                        (click)="openShippingInfo()"
                 >
                     <mat-icon >check</mat-icon>
                 </div>

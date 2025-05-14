@@ -38,18 +38,19 @@
         <td>{{ request.carrierName }}</td>
         <td>{{ request.packageDescription }}</td>
         <td>{{ request.status }}</td>
-        <td *ngIf="request.status === 'Aceptado'">{{ request.price }}</td>
-          <td *ngIf="request.status !== 'Aceptado'">Pendiente</td>
 
-        <td *ngIf="request.status === 'Aceptado'">
+          <td *ngIf="request.status === 'Cotizado'">S/. {{ request.price }}</td>
+          <td *ngIf="request.status === 'Pendiente'">Pendiente</td>
+
+        <td *ngIf="request.status === 'Cotizado'">
           <div
             class="pay-circle"
             [routerLink]="['/entrepreneur/payment-gateway', request.id]"
           ></div>
         </td>
-        <td *ngIf="request.status !== 'Aceptado'">
-            <div class="pay-circle-disabled"></div>
+        <td *ngIf="request.status !== 'Cotizado'">
         </td>
+
       </tr>
     </tbody>
   </table>

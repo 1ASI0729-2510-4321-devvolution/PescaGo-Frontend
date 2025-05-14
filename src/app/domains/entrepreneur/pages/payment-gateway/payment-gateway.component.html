@@ -30,10 +30,11 @@
   </div>
 
   <!-- Modal de Formulario de Pago -->
-  <div class="modal" *ngIf="showPaymentModal" [@fadeAnimation]>
+  <div class="modal" *ngIf="showPaymentModal" >
     <div class="modal-content">
       <app-payment-form
         [requestId]="requestId"
+        [paymentMethod]="paymentMethod"
         (closeModal)="closePaymentModal()"
       ></app-payment-form>
     </div>

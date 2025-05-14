@@ -27,5 +27,15 @@
       <img src="assets/images/plin.png" alt="Plin" />
     </div>
   </div>
+
+  <div class="modal" *ngIf="showPaymentModal" >
+    <div class="modal-content">
+      <app-payment-form
+        [requestId]="requestId"
+        [paymentMethod]="paymentMethod"
+        (closeModal)="closePaymentModal()"
+      ></app-payment-form>
+    </div>
+  </div>
   
 </div>

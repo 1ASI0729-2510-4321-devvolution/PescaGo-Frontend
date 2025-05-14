@@ -32,8 +32,8 @@
         <th>Pagar</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let request of requestData">
+    <tbody *ngFor="let request of requestData">
+      <tr *ngIf="request.status !== 'Pagado'"  >
         <td><input type="checkbox" /></td>
         <td>{{ request.carrierName }}</td>
         <td>{{ request.packageDescription }}</td>

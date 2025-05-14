@@ -45,8 +45,70 @@ h1 {
   margin-right: 20px;
 }
 
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  flex-grow: 1;
+  align-items: center;
+  background-color: #e8f1ff;
+}
+
+.option-card {
+  background-color: #d1e4ff;
+  color: black;
+  width: 240px;
+  height: 280px;
+  text-decoration: none;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #bccee7;
+}
+
+.icon-container {
+  background-color: transparent;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.option-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.options h1 {
+  color: #333;
+  margin-bottom: 40px;
+}
+
 .header-icon {
   width: 30px;
   height: 30px;
-  cursor: pointer; /* Para poder fingir que es un botón */
+  cursor: pointer;
 }

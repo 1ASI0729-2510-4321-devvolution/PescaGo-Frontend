@@ -30,3 +30,19 @@
 .header-icon-right:hover {
   transform: scale(1.1);
 }
+
+.payment-gateway-container {
+  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
+  gap: 20px;
+  justify-items: center;
+  margin: 0 auto;
+  max-width: 400px; /* Limita el ancho para que la cuadrícula no se extienda demasiado */
+}

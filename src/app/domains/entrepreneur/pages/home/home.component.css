@@ -1,0 +1,52 @@
+.home-container {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  justify-content: flex-start; /* Cambiado de center a flex-start */
+}
+
+.header {
+  background-color: #1a2a44; /* Azul oscuro como en la imagen */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 100px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+  color: white;
+}
+
+.header-icons {
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.header-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer; /* Para poder fingir que es un botón */
+}

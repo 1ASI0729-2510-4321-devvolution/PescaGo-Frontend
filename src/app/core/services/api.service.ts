@@ -84,4 +84,18 @@ export class ApiService {
             params: { entrepreneurId }
         });
     }
+
+    getCarrierByUserId(userId: number): Observable<any> {
+        return this.http.get<any[]>(`${this.apiUrl}/carriers`, {
+            params: { userId }
+        }).pipe(
+            map((carriers) => {
+                if (carriers.length > 0) {
+                    return carriers[0]; // Devuelve el primer entrepreneur
+                } else {
+                    throw new Error('No se encontró un entrepreneur para este usuario.');
+                }
+            })
+        );
+    }
 }

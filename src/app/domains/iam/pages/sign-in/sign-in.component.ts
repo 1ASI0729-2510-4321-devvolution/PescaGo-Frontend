@@ -48,7 +48,19 @@ export class SignInComponent {
           if (users.length > 0) {
             const user = users[0];
             if (user.type === 'carrier') {
-              this.router.navigate(['/carrier/home']);
+
+              // Obtener el id del entrepreneur
+              this.apiService.getCarrierByUserId(user.id).subscribe({
+
+                next: (carrier) => {
+                  localStorage.setItem('carrierId', carrier.id); // Guardar el id en localStorage
+                  this.router.navigate(['/carrier/home']);
+                },
+                error: (err) => {
+                  console.error('Error al obtener carrier', err);
+                }
+              });
+
             } else if (user.type === 'entrepreneur') {
               // Obtener el id del entrepreneur
               /*console.log('User ID:', user.id);*/

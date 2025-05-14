@@ -37,27 +37,32 @@
         <tbody>
         <tr *ngFor="let request of requestData">
             <td><input type="checkbox" /></td>
-            <td>{{ request.empresa }}</td>
-            <td>{{ request.recojo }}</td>
-            <td>{{ request.entrega }}</td>
-            <td>{{ request.fecha }}</td>
+            <td>{{ request.entrepreneurName }}</td>
+            <td>{{ request.pickupLocation }}</td>
+            <td>{{ request.deliveryLocation }}</td>
+            <td>{{ request.pickupDateTime }}</td>
             <td>
                 <img
                         src="assets/images/image22.png"
                         class="pay-package"
                         alt="Detalles del Paquete"
-                        (click)="openPacketDetails()"
+                        (click)="openPacketDetails(request)"
                 />
             </td>
-            <td *ngIf="request.estado === 'Aceptado'">
+            <td *ngIf="request.status === 'Pendiente'">
                 <div
                         class="pay-circle"
                         alt="Detalles del Paquete"
-                        (click)="openOfferedPrice()"
+                        (click)="openOfferedPrice(request)"
                 ></div>
             </td>
-            <td *ngIf="request.estado !== 'Aceptado'"></td>
-            <td>{{ request.estado }}</td>
+            <td *ngIf="request.status === 'Cotizado'|| request.status === 'Aceptado'">
+                Cotizado en S/. {{ request.price }}
+            </td>
+            <td *ngIf="request.status === 'Pagado'">
+            </td>
+            <td *ngIf="request.status === 'Cotizado'">Esperando respuesta</td>
+            <td *ngIf="request.status !== 'Cotizado'">{{ request.status }}</td>
         </tr>
         </tbody>
     </table>

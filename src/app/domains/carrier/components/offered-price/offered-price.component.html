@@ -9,7 +9,12 @@
             <h2>Precio Ofrecido por el Servicio</h2>
             <div class="info-box full-width">
                 <mat-form-field appearance="outline">
-                    <input matInput type="number" placeholder="Precio ofrecido" />
+                    <input
+                            matInput
+                            type="number"
+                            [(ngModel)]="price"
+                            placeholder="Precio ofrecido"
+                    />
                     <mat-icon matIconSuffix>payments</mat-icon>
                 </mat-form-field>
             </div>

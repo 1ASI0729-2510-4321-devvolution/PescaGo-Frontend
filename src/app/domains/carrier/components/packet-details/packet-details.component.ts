@@ -15,10 +15,12 @@ import {MatButton} from "@angular/material/button";
   styleUrl: './packet-details.component.css'
 })
 export class PacketDetailsComponent {
+
   constructor(
       public dialogRef: MatDialogRef<PacketDetailsComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any // Recibe datos opcionales
-  ) {}
+  ) {console.log('Datos recibidos en PacketDetailsComponent:', this.data.request); // Verificar los datos
+  }
 
   // Método para cerrar el diálogo
   closeDialog(): void {

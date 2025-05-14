@@ -128,4 +128,12 @@ export class ApiService {
             })
         );
     }
+
+    editRequestById(id: number, updatedRequest: any): Observable<any> {
+        return this.http.put(`${this.apiUrl}/requests/${id}`, updatedRequest);
+    }
+
+    createHiredService(hiredService: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/hiredServices`, hiredService);
+    }
 }

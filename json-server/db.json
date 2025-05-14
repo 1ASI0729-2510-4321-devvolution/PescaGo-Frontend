@@ -68,8 +68,8 @@
       "pickupLocation": "Micasa",
       "deliveryLocation": "Lomas",
       "pickupDateTime": "2025-05-16T19:35",
-      "price": 200,
-      "status": "Aceptado",
+      "price": 250,
+      "status": "Cotizado",
       "id": 1
     },
     {

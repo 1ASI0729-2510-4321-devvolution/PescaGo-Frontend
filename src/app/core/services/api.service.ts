@@ -68,4 +68,10 @@ export class ApiService {
     createRequest(request: any): Observable<any> {
         return this.http.post(`${this.apiUrl}/requests`, request);
     }
+
+    getRequestsByEntrepreneurId(entrepreneurId: string): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/requests`, {
+            params: { entrepreneurId }
+        });
+    }
 }

@@ -35,17 +35,21 @@
     <tbody>
       <tr *ngFor="let request of requestData">
         <td><input type="checkbox" /></td>
-        <td>{{ request.empresa }}</td>
-        <td>{{ request.descripcion }}</td>
-        <td>{{ request.estado }}</td>
-        <td>{{ request.precio }}</td>
-        <td *ngIf="request.estado === 'Aceptado'">
+        <td>{{ request.carrierName }}</td>
+        <td>{{ request.packageDescription }}</td>
+        <td>{{ request.status }}</td>
+        <td *ngIf="request.status === 'Aceptado'">{{ request.price }}</td>
+          <td *ngIf="request.status !== 'Aceptado'">Pendiente</td>
+
+        <td *ngIf="request.status === 'Aceptado'">
           <div
             class="pay-circle"
             [routerLink]="['/entrepreneur/payment-gateway', request.id]"
           ></div>
         </td>
-        <td *ngIf="request.estado !== 'Aceptado'"></td>
+        <td *ngIf="request.status !== 'Aceptado'">
+            <div class="pay-circle-disabled"></div>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -54,21 +54,41 @@
   "requests": [
     {
       "entrepreneurId": "2",
-      "carriers": [
-        1
-      ],
+      "carrierId": 1,
+      "carrierName": "Carrier 1",
       "packageDescription": "Pescado",
-      "quantity": 1,
-      "weightTotal": 23,
+      "quantity": 2,
+      "weightTotal": 1,
       "dimensions": {
-        "length": 20,
-        "width": 32,
-        "height": 41
+        "length": 1,
+        "width": 1,
+        "height": 2
       },
       "pickupLocation": "Micasa",
       "deliveryLocation": "Lomas",
-      "pickupDateTime": "2025-05-10T18:39",
+      "pickupDateTime": "2025-05-16T19:35",
+      "price": 200,
+      "status": "Aceptado",
       "id": 1
+    },
+    {
+      "entrepreneurId": "2",
+      "carrierId": 2,
+      "carrierName": "Pepe",
+      "packageDescription": "Pescado",
+      "quantity": 2,
+      "weightTotal": 1,
+      "dimensions": {
+        "length": 1,
+        "width": 1,
+        "height": 2
+      },
+      "pickupLocation": "Micasa",
+      "deliveryLocation": "Lomas",
+      "pickupDateTime": "2025-05-16T19:35",
+      "price": 0,
+      "status": "Pendiente",
+      "id": 2
     }
   ]
 }

@@ -72,9 +72,15 @@ export class CreateRequestComponent implements OnInit {
       return;
     }
 
-    const request = {
+    if (this.selectedCarriers.length === 0) {
+      alert("Por favor, selecciona al menos un carrier.");
+      return;
+    }
+
+    const requests = this.selectedCarriers.map((carrier) => ({
       entrepreneurId: this.entrepreneurId,
-      carriers: this.selectedCarriers.map((carrier) => carrier.id),
+      carrierId: carrier.id,
+      carrierName: carrier.name,
       packageDescription: this.packageDescription,
       quantity: this.quantity,
       weightTotal: this.weightTotal,
@@ -86,17 +92,23 @@ export class CreateRequestComponent implements OnInit {
       pickupLocation: this.pickupLocation,
       deliveryLocation: this.deliveryLocation,
       pickupDateTime: this.pickupDateTime,
-    };
+      price: 0, // Este campo se puede calcular o dejar en 0 por ahora
+      status: "Pendiente", // Estado inicial de la solicitud
+    }));
 
-    this.apiService.createRequest(request).subscribe({
-      next: () => {
-        alert("Solicitud enviada con éxito. Redirigiendo a Estado de Solicitudes.");
-        this.router.navigate(["/entrepreneur/request-status"]);
-      },
-      error: (err) => {
-        console.error("Error al guardar la solicitud:", err);
-        alert("Ocurrió un error al enviar la solicitud. Inténtalo nuevamente.");
-      },
+    // Enviar cada solicitud al API
+    requests.forEach((request) => {
+      this.apiService.createRequest(request).subscribe({
+        next: () => {
+          console.log("Solicitud creada para el carrier:", request.carrierName);
+        },
+        error: (err) => {
+          console.error("Error al guardar la solicitud:", err);
+        },
+      });
     });
+
+    alert("Solicitudes enviadas con éxito. Redirigiendo a Estado de Solicitudes.");
+    this.router.navigate(["/entrepreneur/request-status"]);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { CommonModule } from "@angular/common";
+import {ApiService} from "../../../../core/services/api.service";
 
 @Component({
   selector: "app-request-status",
@@ -10,38 +11,24 @@ import { CommonModule } from "@angular/common";
   standalone: true,
 })
 export class RequestStatusComponent implements OnInit {
-  requestData = [
-    {
-      id: 1,
-      empresa: "Empresa 1",
-      descripcion: "Pescado bonito fresco en caja sellada",
-      estado: "Pendiente",
-      precio: "--",
-    },
-    {
-      id: 2,
-      empresa: "Empresa 2",
-      descripcion: "Pescado bonito fresco en caja sellada",
-      estado: "Rechazado",
-      precio: "--",
-    },
-    {
-      id: 3,
-      empresa: "Empresa 3",
-      descripcion: "Pescado bonito fresco en caja sellada",
-      estado: "Aceptado",
-      precio: "50",
-    },
-    {
-      id: 4,
-      empresa: "Empresa 4",
-      descripcion: "Pescado bonito fresco en caja sellada",
-      estado: "Aceptado",
-      precio: "70",
-    },
-  ];
+  requestData: any[] = [];
+  entrepreneurId: string | null = null;
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.entrepreneurId = localStorage.getItem('entrepreneurId'); // Recuperar el id
+    console.log('Entrepreneur ID:', this.entrepreneurId);
+
+    if (this.entrepreneurId) {
+      this.apiService.getRequestsByEntrepreneurId(this.entrepreneurId).subscribe({
+        next: (requests) => {
+          this.requestData = requests;
+        },
+        error: (err) => {
+          console.error("Error al cargar los requests:", err);
+        },
+      });
+    }
+  }
 }

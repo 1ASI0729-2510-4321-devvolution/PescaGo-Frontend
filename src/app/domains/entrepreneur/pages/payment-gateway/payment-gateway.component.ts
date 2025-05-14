@@ -22,4 +22,31 @@ import { Location } from "@angular/common";
   ],
 })
 export class PaymentGatewayComponent implements OnInit {
+
+  requestId: number | null = null;
+  showPaymentModal: boolean = false;
+  paymentMethod: string = ""; // Método de pago por defecto
+
+  constructor(private route: ActivatedRoute, private location: Location) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.requestId = +params["id"];
+    });
+  }
+
+  selectMethod(method: string): void {
+    this.paymentMethod = method;
+    console.log('Método de pago seleccionado:', this.paymentMethod); // Verificar el valor
+    this.showPaymentModal = true;
+  }
+
+  closePaymentModal(): void {
+    this.showPaymentModal = false;
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
 }

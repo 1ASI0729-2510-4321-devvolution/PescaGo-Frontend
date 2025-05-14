@@ -44,3 +44,53 @@
   outline: none;
   box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
 }
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+.pay-button {
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+
+.pay-button:hover {
+  background-color: #6b2e0e;
+}
+
+.close-button {
+  background-color: #e0e0e0;
+  color: #555;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: #ccc;
+}
+
+input[type="month"] {
+  padding: 11px 12px;
+}
+
+#cvv {
+  max-width: 100px;
+}

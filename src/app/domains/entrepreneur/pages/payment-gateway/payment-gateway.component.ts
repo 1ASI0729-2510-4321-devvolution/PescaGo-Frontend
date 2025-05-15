@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ActivatedRoute } from "@angular/router"; //Si se necesita agregar routerLink se hace aqui
 import { trigger, transition, style, animate } from "@angular/animations";
-import { PaymentFormComponent } from "../../components/payment-form/payment-form.component";
+import { PaymentFormComponent } from "../payment-form/payment-form.component";
 import { Location } from "@angular/common";
 
 @Component({
@@ -22,7 +22,6 @@ import { Location } from "@angular/common";
   ],
 })
 export class PaymentGatewayComponent implements OnInit {
-
   requestId: number | null = null;
   showPaymentModal: boolean = false;
   paymentMethod: string = ""; // Método de pago por defecto
@@ -37,7 +36,7 @@ export class PaymentGatewayComponent implements OnInit {
 
   selectMethod(method: string): void {
     this.paymentMethod = method;
-    console.log('Método de pago seleccionado:', this.paymentMethod); // Verificar el valor
+    console.log("Método de pago seleccionado:", this.paymentMethod); // Verificar el valor
     this.showPaymentModal = true;
   }
 
@@ -48,5 +47,4 @@ export class PaymentGatewayComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
 }

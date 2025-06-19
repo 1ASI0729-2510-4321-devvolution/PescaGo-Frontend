@@ -34,26 +34,30 @@ export class CreateRequestComponent implements OnInit {
       private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.entrepreneurId = parseInt(localStorage.getItem('entrepreneurId') || '0', 10); // Recuperar el id
-    this.entrepreneurName = localStorage.getItem('entrepreneurName') ; // Recuperar el id
+    this.entrepreneurId = parseInt(localStorage.getItem('entrepreneurId') || '0', 10);
+    this.entrepreneurName = localStorage.getItem('entrepreneurName');
+
     console.log('Entrepreneur ID:', this.entrepreneurId);
     console.log('Entrepreneur Name:', this.entrepreneurName);
 
     this.route.queryParams.subscribe((params) => {
-      const carrierIds = params["carrierIds"]
-          ? params["carrierIds"].split(",").map((id: string) => parseInt(id, 10))
+      const carrierIds = params['carrierIds']
+          ? params['carrierIds'].split(',').map((id: string) => parseInt(id, 10))
           : [];
 
+      console.log('Carrier IDs:', carrierIds);
+
       if (carrierIds.length > 0) {
-        this.apiService.getCarriers().subscribe({
-          next: (carriers) => {
-            this.selectedCarriers = carriers.filter((carrier) =>
-                carrierIds.includes(carrier.id)
-            );
-          },
-          error: (err) => {
-            console.error("Error al cargar los carriers:", err);
-          },
+        carrierIds.forEach((id: number) => {
+          this.apiService.getCarrierById(id).subscribe({
+            next: (carrier) => {
+              console.log('Carrier obtenido:', carrier);
+              this.selectedCarriers.push(carrier);
+            },
+            error: (err) => {
+              console.error(`Error al cargar el carrier con ID ${id}:`, err);
+            },
+          });
         });
       }
     });

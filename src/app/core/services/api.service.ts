@@ -41,7 +41,7 @@ export class ApiService {
         );
     }
 
-    // Método para Recuperar Usuario y Carrier o Entrepreneur
+    // Método para Recuperar Carrier o Entrepreneur por UserID
 
     getCarrierById(id: number): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/carriers/${id}`).pipe(
@@ -67,7 +67,7 @@ export class ApiService {
         );
     }
 
-    
+    // Metodo para obtener todos los carriers disponibles
 
     getProcessedCarriers(): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/carriers`).pipe(
@@ -81,51 +81,23 @@ export class ApiService {
         );
     }
 
+    // Crea solicutud de servicio
+
     createRequest(request: any): Observable<any> {
         return this.http.post(`${this.apiUrl}/requests`, request);
     }
 
+    // Recuper solicutud de servicio por Entrepreneur o Carrier ID
+
     getRequestsByEntrepreneurId(entrepreneurId: number): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/requests`, {
-            params: { entrepreneurId }
-        });
+        return this.http.get<any[]>(`${this.apiUrl}/requests/entrepreneur/${entrepreneurId}`);
     }
 
     getRequestsByCarrierId(carrierId: number): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/requests`, {
-            params: { carrierId }
-        });
+        return this.http.get<any[]>(`${this.apiUrl}/requests/carrier/${carrierId}`);
     }
 
-    createReceipt(receipt: any): Observable<any> {
-        return this.http.post(`${this.apiUrl}/receipts`, receipt);
-    }
-
-    getHiredServicesByEntrepreneurId(entrepreneurId: number): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/hiredServices`, {
-            params: { entrepreneurId }
-        });
-    }
-
-    getHiredServicesByCarrierId(carrierId: number): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/hiredServices`, {
-            params: { carrierId }
-        });
-    }
-
-
-
-    editRequestById(id: number, updatedRequest: any): Observable<any> {
-        return this.http.put(`${this.apiUrl}/requests/${id}`, updatedRequest);
-    }
-
-    editServiceById(id: number, updatedService: any): Observable<any> {
-        return this.http.put(`${this.apiUrl}/hiredServices/${id}`, updatedService);
-    }
-
-    createHiredService(hiredService: any): Observable<any> {
-        return this.http.post(`${this.apiUrl}/hiredServices`, hiredService);
-    }
+    // Recuper / editar solicutud de servicio por Request ID
 
     getRequestById(id: number): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/requests/${id}`).pipe(
@@ -138,4 +110,33 @@ export class ApiService {
             })
         );
     }
+
+    editRequestById(id: number, updatedRequest: any): Observable<any> {
+        return this.http.put(`${this.apiUrl}/requests/${id}`, updatedRequest);
+    }
+
+    // Crear Recibo de pago
+
+    createReceipt(receipt: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/receipts`, receipt);
+    }
+
+    // HiredServices
+
+    createHiredService(hiredService: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/hired-services`, hiredService);
+    }
+
+    editServiceById(id: number, updatedService: any): Observable<any> {
+        return this.http.put(`${this.apiUrl}/hired-services/${id}`, updatedService);
+    }
+
+    getHiredServicesByEntrepreneurId(entrepreneurId: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/hired-services/entrepreneur/${entrepreneurId}`);
+    }
+
+    getHiredServicesByCarrierId(carrierId: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/hired-services/carrier/${carrierId}`);
+    }
+
 }

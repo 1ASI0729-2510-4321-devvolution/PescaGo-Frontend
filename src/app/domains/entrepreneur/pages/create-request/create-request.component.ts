@@ -25,6 +25,7 @@ export class CreateRequestComponent implements OnInit {
   deliveryLocation: string = "";
   pickupDateTime: string = "";
 
+  userId: number | null = null;
   entrepreneurId: number | null = null;
   entrepreneurName: string | null = null;
 
@@ -34,9 +35,11 @@ export class CreateRequestComponent implements OnInit {
       private apiService: ApiService) {}
 
   ngOnInit(): void {
+    this.userId = parseInt(localStorage.getItem('userId') || '0', 10);
     this.entrepreneurId = parseInt(localStorage.getItem('entrepreneurId') || '0', 10);
     this.entrepreneurName = localStorage.getItem('entrepreneurName');
 
+    console.log('User ID:', this.userId);
     console.log('Entrepreneur ID:', this.entrepreneurId);
     console.log('Entrepreneur Name:', this.entrepreneurName);
 

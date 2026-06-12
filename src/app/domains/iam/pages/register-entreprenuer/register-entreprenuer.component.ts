@@ -64,10 +64,10 @@ export class RegisterEntreprenuerComponent {
     if (this.registerForm.valid) {
       const { name, email, password } = this.registerForm.value;
 
-      const user = { email, password, type: 'entrepreneur' };
+      const UserCreate= { username: email, email, password, role: 'entrepreneur' };
       const entrepreneur = { name };
 
-      this.apiService.registerEntrepreneur(user, entrepreneur).subscribe({
+      this.apiService.registerEntrepreneur(UserCreate, entrepreneur).subscribe({
         next: () => {
           console.log('Registro exitoso');
           this.router.navigate(['/sign-in']);

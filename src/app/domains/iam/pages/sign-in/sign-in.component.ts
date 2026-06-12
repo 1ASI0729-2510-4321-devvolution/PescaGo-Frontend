@@ -44,15 +44,15 @@ export class SignInComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.apiService.authenticateUser(email, password).subscribe({
-        next: (users) => {
-          if (users.length > 0) {
-            const user = users[0];
-            if (user.type === 'carrier') {
+        next: (user) => {
+          console.log(user);
+            if (user.role === 'carrier') {
 
               // Obtener el id del entrepreneur
-              this.apiService.getCarrierByUserId(user.id).subscribe({
+              this.apiService.getCarrierById(user.id).subscribe({
 
                 next: (carrier) => {
+                  localStorage.setItem('userId', carrier.userId); // Guardar el id en localStorage
                   localStorage.setItem('carrierId', carrier.id); // Guardar el id en localStorage
                   localStorage.setItem('carrierName', carrier.name); // Guardar el id en localStorage
                   this.router.navigate(['/carrier/home']);
@@ -62,15 +62,16 @@ export class SignInComponent {
                 }
               });
 
-            } else if (user.type === 'entrepreneur') {
+            } else if (user.role === 'entrepreneur') {
               // Obtener el id del entrepreneur
               /*console.log('User ID:', user.id);*/
-              this.apiService.getEntrepreneurByUserId(user.id).subscribe({
+              this.apiService.getEntrepreneurById(user.id).subscribe({
 
                 next: (entrepreneur) => {
+                  localStorage.setItem('userId', entrepreneur.userId); // Guardar el id en localStorage
                   localStorage.setItem('entrepreneurId', entrepreneur.id); // Guardar el id en localStorage
                   localStorage.setItem('entrepreneurName', entrepreneur.name); // Guardar el id en localStorage
-                  /*console.log('entrepreneurId:', entrepreneur.id);*/
+
                   this.router.navigate(['/entrepreneur/home']);
                 },
                 error: (err) => {
@@ -78,9 +79,6 @@ export class SignInComponent {
                 }
               });
             }
-          } else {
-            this.errorMessage = 'Credenciales inválidas';
-          }
         },
         error: (err) => {
           console.error('Error al autenticar', err);

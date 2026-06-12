@@ -4,6 +4,7 @@ import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import { FormBuilder, FormGroup, ReactiveFormsModule ,Validators } from '@angular/forms';
 import {ApiService} from "../../../../core/services/api.service";
+import {UserCreate} from "../../../../shared/models/user.model";
 
 @Component({
   selector: 'app-register-carrier',
@@ -64,10 +65,10 @@ export class RegisterCarrierComponent {
     if (this.registerForm.valid) {
       const { name, email, password, description } = this.registerForm.value;
 
-      const user = { email, password, type: 'carrier' };
+      const UserCreate= { username: email, email, password, role: 'carrier' }; // Crear el objeto User
       const carrier = { name, description };
 
-      this.apiService.registerCarrier(user, carrier).subscribe({
+      this.apiService.registerCarrier(UserCreate, carrier).subscribe({
         next: () => {
           console.log('Registro exitoso');
           this.router.navigate(['/sign-in']);
